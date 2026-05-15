@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Família Ribeiro de Carvalho - Árvore Genealógica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #5d4e37 0%, #8b7355 100%);
+            color: #f5f1e8;
+            padding: 50px 40px;
+            text-align: center;
+            border-bottom: 5px solid #d4af37;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: #e8dcc8;
+            border-bottom: 1px solid #d4c5b0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-tabs button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #5d4e37;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tabs button:hover {
+            background: rgba(93, 78, 55, 0.1);
+        }
+
+        .nav-tabs button.active {
+            background: white;
+            border-bottom-color: #d4af37;
+            color: #8b7355;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-text {
+            background: #faf8f3;
+            padding: 30px;
+            border-left: 5px solid #d4af37;
+            margin: 20px 0;
+            line-height: 1.9;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .story-text h2 {
+            color: #5d4e37;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            font-weight: normal;
+        }
+
+        .story-text h3 {
+            color: #5d4e37;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .story-text p {
+            margin-bottom: 15px;
+        }
+
+        .story-text ul {
+            margin: 15px 0 15px 30px;
+            color: #555;
+        }
+
+        .ancestors-section h2 {
+            color: #5d4e37;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 10px;
+        }
+
+        .couple-card {
+            background: #faf8f3;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 2px solid #d4c5b0;
+        }
+
+        .couple-card h3 {
+            color: #8b7355;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .couple-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .person-info {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .person-info h4 {
+            color: #5d4e37;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .person-info p {
+            color: #666;
+            font-size: 0.95em;
+            margin: 5px 0;
+        }
+
+        .generation {
+            margin: 40px 0;
+        }
+
+        .generation h3 {
+            background: #e8dcc8;
+            padding: 15px 20px;
+            color: #5d4e37;
+            margin-bottom: 20px;
+            border-left: 5px solid #d4af37;
+            font-size: 1.3em;
+        }
+
+        .generation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background: white;
+            border: 1px solid #d4c5b0;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .member-name {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #5d4e37;
+            margin-bottom: 10px;
+        }
+
+        .member-dates {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .member-location {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .member-spouse {
+            font-size: 0.9em;
+            color: #666;
+            background: #f5f1e8;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #5d4e37;
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            color: #5d4e37;
+            font-size: 1.6em;
+            margin-bottom: 5px;
+        }
+
+        .modal-header p {
+            color: #999;
+            font-style: italic;
+        }
+
+        .modal-body {
+            color: #555;
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #5d4e37;
+            color: #f5f1e8;
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        .tree-note {
+            background: #fffaf0;
+            padding: 15px 20px;
+            border-left: 5px solid #d4af37;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .couple-info {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .nav-tabs button {
+                border-bottom: 2px solid #d4c5b0;
+                border-left: 3px solid transparent;
+            }
+
+            .nav-tabs button.active {
+                border-bottom: none;
+                border-left-color: #d4af37;
+            }
+
+            .hero-image {
+                max-height: 300px;
+            }
+
+            .generation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌳 Família Ribeiro de Carvalho</h1>
+            <p>Uma homenagem à história e memória da nossa família</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('historia')">📖 História</button>
+            <button class="tab-btn" onclick="switchTab('ancestrais')">👨‍👩‍👧 Ancestrais</button>
+            <button class="tab-btn" onclick="switchTab('arvore')">🌳 Árvore Genealógica</button>
+            <button class="tab-btn" onclick="switchTab('sobre')">ℹ️ Sobre</button>
+        </div>
+
+        <main>
+            <!-- SEÇÃO 1: HISTÓRIA -->
+            <section id="historia" class="section active">
+                <img id="familyPhoto" src="" alt="Foto da família" class="hero-image" style="background: #ddd; display:block; width:100%; height:auto;">
+                
+                <div class="story-text">
+                    <h2>João Ribeiro de Carvalho & Lídia Vasconcelos Ribeiro</h2>
+                    
+                    <p><strong>João Ribeiro de Carvalho</strong> (16 de outubro de 1906 - 12 de novembro de 1988) nasceu na fazenda Tabocas, em Nilo Peçanha, Bahia. Órfão desde criança, foi acolhido por sua tia e professora Joana Rodrigues Freire de Carvalho, que lhe ensinou a importância do trabalho, dos estudos, da compaixão e da retidão moral.</p>
+
+                    <p><strong>Lídia Pereira de Vasconcelos</strong> (11 de dezembro de 1907 - 10 de outubro de 2001) nasceu em Ubaira, Bahia. Após casar-se com João em 17 de março de 1930, tornou-se Lídia Vasconcelos Ribeiro, formando um casal que enfrentaria juntos todos os desafios da vida.</p>
+
+                    <p>Juntos, João e Lídia vivenciaram períodos cruciais da história brasileira: o início da República, a Era Vargas, a Segunda Guerra Mundial, o Regime Militar e a Redemocratização. Enfrentaram escassez de alimentos e medicamentos, mas sobreviveram com dedicação à agricultura de subsistência, à criação de animais e parcerias com amigos.</p>
+
+                    <p>Apesar de perderem dois filhos, o casal permaneceu firme em sua fé. A música "Segura na mão de Deus" representava para Lídia um constante lembrete de que Deus estava presente em suas vidas, guiando-os através de todas as adversidades.</p>
+
+                    <p>Ao final de suas vidas, conseguiram transformar a fazenda Barra do Buri em um empreendimento produtivo e próspero. Mas a maior herança que deixaram foi o exemplo de vida: <strong>resiliência, fé, amor à família e valorização da educação</strong>.</p>
+
+                    <p style="margin-top: 30px; font-style: italic; color: #777; border-top: 2px solid #d4af37; padding-top: 20px;"><strong>Legado:</strong> A história deste casal continua inspirando seus descendentes, ensinando como enfrentar os desafios da vida com coragem, esperança e fé, sempre segurando na mão de Deus.</p>
+                </div>
+
+                <div class="story-text">
+                    <h2>Propósito deste Registro</h2>
+                    <p>As informações foram resgatadas de uma antiga Bíblia que pertencia à Lídia, com depoimentos registrados pelos filhos Ebenezer Ribeiro de Vasconcelos e Darcy Ribeiro de Macêdo. A contribuição de Eliezer Ribeiro de Vasconcelos foi fundamental para elucidar informações que permitiram traçar um perfil completo e detalhado da vida desta família.</p>
+                    
+                    <p>Este registro documenta e divulga a história familiar, permitindo a organização das informações sobre nossos ancestrais e descendentes em uma linha do tempo. Com ele, é possível rastrear as origens, características e particularidades que são transmitidas de geração em geração.</p>
+
+                    <p><strong>"Quem não conhece sua história está fadado a repeti-la."</strong> A preservação da memória familiar é essencial para entender e proteger nossa história, caminhando para o futuro com uma base sólida e identidade bem definida.</p>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 2: ANCESTRAIS -->
+            <section id="ancestrais" class="section">
+                <h2 class="ancestors-section" style="margin-bottom: 30px;">Geração dos Avós de João Ribeiro de Carvalho</h2>
+
+                <div class="couple-card">
+                    <h3>Avô Paterno: Quintiliano Ribeiro & Avó Paterna: Efigenia Ribeiro de Carvalho</h3>
+                    <div class="couple-info">
+                        <div class="person-info">
+                            <h4>Quintiliano Ribeiro</h4>
+                            <p><strong>Avô Paterno de João Ribeiro de Carvalho</strong></p>
+                            <p>Pai de Firmino José Ribeiro</p>
+                        </div>
+                        <div class="person-info">
+                            <h4>Efigenia Ribeiro de Carvalho</h4>
+                            <p><strong>Avó Paterna de João Ribeiro de Carvalho</strong></p>
+                            <p>Mãe de Firmino José Ribeiro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="couple-card">
+                    <h3>Avô Materno: João Freire de Carvalho & Avó Materna: Maria Rosa de Carvalho</h3>
+                    <div class="couple-info">
+                        <div class="person-info">
+                            <h4>João Freire de Carvalho</h4>
+                            <p><strong>Avô Materno de João Ribeiro de Carvalho</strong></p>
+                            <p>Pai de Maria Rita de Carvalho (mãe de João)</p>
+                        </div>
+                        <div class="person-info">
+                            <h4>Maria Rosa de Carvalho</h4>
+                            <p><strong>Avó Materna de João Ribeiro de Carvalho</strong></p>
+                            <p>Mãe de Maria Rita de Carvalho</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="ancestors-section" style="margin: 40px 0 30px;">Geração dos Avós de Lídia Vasconcelos Ribeiro</h2>
+
+                <div class="couple-card">
+                    <h3>Avô Paterno: Manoel Inácio de Vasconcelos</h3>
+                    <div class="couple-info">
+                        <div class="person-info">
+                            <h4>Manoel Inácio de Vasconcelos</h4>
+                            <p><strong>Avô Paterno de Lídia Vasconcelos Ribeiro</strong></p>
+                            <p>Pai de Ezequiel Inácio de Vasconcelos (pai de Lídia)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="couple-card">
+                    <h3>Avô Materno: Manoel Pereira da Exaltação & Avó Materna: Maria Francisca da Exaltação</h3>
+                    <div class="couple-info">
+                        <div class="person-info">
+                            <h4>Manoel Pereira da Exaltação</h4>
+                            <p><strong>Avô Materno de Lídia Vasconcelos Ribeiro</strong></p>
+                            <p>Pai de Maria Donata de Vasconcelos (mãe de Lídia)</p>
+                        </div>
+                        <div class="person-info">
+                            <h4>Maria Francisca da Exaltação</h4>
+                            <p><strong>Avó Materna de Lídia Vasconcelos Ribeiro</strong></p>
+                            <p>Mãe de Maria Donata de Vasconcelos</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 3: ÁRVORE GENEALÓGICA -->
+            <section id="arvore" class="section">
+                <div class="tree-note">
+                    📍 Clique em qualquer membro para ver mais detalhes sobre essa pessoa e seus descendentes
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 1: O Casal Fundador</h3>
+                    <div class="generation-grid">
+                        <div class="member-card" onclick="showMemberDetails('joao')">
+                            <div class="member-name">João Ribeiro de Carvalho</div>
+                            <div class="member-dates">★ 16/10/1906 | † 12/11/1988</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Casado com: Lídia Vasconcelos Ribeiro</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('lidia')">
+                            <div class="member-name">Lídia Vasconcelos Ribeiro</div>
+                            <div class="member-dates">★ 11/12/1907 | † 10/10/2001</div>
+                            <div class="member-location">Ubaira, Bahia</div>
+                            <div class="member-spouse">Casada com: João Ribeiro de Carvalho</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 2: Filhos de João e Lídia</h3>
+                    <div class="generation-grid">
+                        <div class="member-card" onclick="showMemberDetails('dulce')">
+                            <div class="member-name">Dulce Ribeiro Vasconcelos</div>
+                            <div class="member-dates">★ 16/01/1931 | † 20/08/2010</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Casada com: Clovis Xavier Passinho</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('eliezer')">
+                            <div class="member-name">Eliezer Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 09/03/1933</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Casado com: Maria Helena Tourinho</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('osvaldo')">
+                            <div class="member-name">Osvaldo Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 03/04/1935 | † 07/01/2023</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Casado com: Edna Prado de Vasconcelos</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('alcides')">
+                            <div class="member-name">Alcides Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 04/10/1937 | † 26/11/1946</div>
+                            <div class="member-location">Ituberá, Bahia</div>
+                            <div class="member-spouse">Faleceu na infância</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('ebenezer')">
+                            <div class="member-name">Ebenezer Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 23/12/1940 | † 27/09/1994</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Casado com: Ofir Ramos Quireza</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('elides')">
+                            <div class="member-name">Elides Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 21/01/1942 | † 07/09/1942</div>
+                            <div class="member-location">Nilo Peçanha, Bahia</div>
+                            <div class="member-spouse">Faleceu na infância</div>
+                        </div>
+                        <div class="member-card" onclick="showMemberDetails('darcy')">
+                            <div class="member-name">Darcy Ribeiro de Vasconcelos</div>
+                            <div class="member-dates">★ 11/07/1947</div>
+                            <div class="member-location">Ituberá, Bahia</div>
+                            <div class="member-spouse">Casado com: Luiz Carlos de Macêdo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 3: Netos (Filhos de Dulce e Clovis Passinho)</h3>
+                    <div class="generation-grid">
+                        <div class="member-card">
+                            <div class="member-name">Hebert Clovis Ribeiro Passinho</div>
+                            <div class="member-dates">★ 21/07/1952</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Cleuza Silva Passinho</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Herman Cesio Ribeiro Passinho</div>
+                            <div class="member-dates">★ 18/02/1954</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Maria das Graças Azevedo</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Helder Célio Ribeiro Passinho</div>
+                            <div class="member-dates">★ 12/09/1957</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">2 casamentos</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Helma Cleia Ribeiro Passinho</div>
+                            <div class="member-dates">★ 22/10/1960</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Hélia Célia Ribeiro Passinho</div>
+                            <div class="member-dates">★ 01/06/1962</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casada com: Gildásio Silva Ribeiro</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 3: Netos (Filhos de Eliezer)</h3>
+                    <div class="generation-grid">
+                        <div class="member-card">
+                            <div class="member-name">Airam Tourinho de Vasconcelos Pereira</div>
+                            <div class="member-dates">★ 01/04/1960</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casada com: Ricardo Henrique Silva Pereira</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Eliézer Tourinho de Vasconcelos</div>
+                            <div class="member-dates">★ 09/06/1961</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Antonino Augusto Tourinho de Vasconcelos</div>
+                            <div class="member-dates">★ 12/01/1968</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 3: Netos (Filhos de Osvaldo)</h3>
+                    <div class="generation-grid">
+                        <div class="member-card">
+                            <div class="member-name">João Ribeiro de Carvalho Neto</div>
+                            <div class="member-dates">★ 18/07/1966</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Sandra Moreira Costa</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Ezequiel Cesar Prado Vasconcelos</div>
+                            <div class="member-dates">★ 26/02/1968</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Dilma Silva de Souza</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Robert James Santos Vasconcelos</div>
+                            <div class="member-dates">★ 18/01/1964</div>
+                            <div class="member-location">Alagoinhas, Bahia</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Robson Freitas da Silva</div>
+                            <div class="member-dates">★ 27/11/1969</div>
+                            <div class="member-location">Alagoinhas, Bahia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 3: Netos (Filhos de Ebenezer)</h3>
+                    <div class="generation-grid">
+                        <div class="member-card">
+                            <div class="member-name">Marcio Ramos Quireza Vasconcelos</div>
+                            <div class="member-dates">★ 30/03/1975</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Carla Reboucas Silva</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Lavínia Lídia Ramos Quireza Vasconcelos</div>
+                            <div class="member-dates">★ 10/04/1977</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">Clarissa Ramos Quireza Vasconcelos</div>
+                            <div class="member-dates">★ 16/03/1981</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation">
+                    <h3>Geração 3: Netos (Filhos de Darcy)</h3>
+                    <div class="generation-grid">
+                        <div class="member-card">
+                            <div class="member-name">Lutgard Macêdo Neto</div>
+                            <div class="member-dates">★ 27/09/1973</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Andrea Soares Brito</div>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-name">André Luis Ribeiro de Macêdo</div>
+                            <div class="member-dates">★ 15/05/1975</div>
+                            <div class="member-location">Salvador, Bahia</div>
+                            <div class="member-spouse">Casado com: Lílian Maria Afonso</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 4: SOBRE -->
+            <section id="sobre" class="section">
+                <div class="story-text">
+                    <h2>Sobre este Registro Genealógico</h2>
+                    
+                    <p><strong>Fonte histórica:</strong> As informações foram resgatadas de uma antiga Bíblia que pertencia a Lídia Vasconcelos Ribeiro, esposa de João Ribeiro de Carvalho. Nela, foram encontrados depoimentos do casal registrados pelos filhos Ebenezer Ribeiro de Vasconcelos e posteriormente pela filha Darcy Ribeiro de Macêdo.</p>
+
+                    <p><strong>Contribuições principais:</strong> A contribuição de Eliezer Ribeiro de Vasconcelos foi fundamental para a elaboração deste documento. Suas memórias foram essenciais para elucidar informações que permitiram traçar um perfil completo e detalhado da vida e trajetória dessa família ao longo das gerações.</p>
+
+                    <h3>Contexto Histórico</h3>
+                    <p>Os primeiros membros da família viveram durante o período imperial do Brasil. Assim, as diversas gerações descrevem períodos importantes da história do Brasil, como:</p>
+                    <ul>
+                        <li>O início da República</li>
+                        <li>A República do Café com Leite</li>
+                        <li>A Era Vargas</li>
+                        <li>A Segunda Guerra Mundial</li>
+                        <li>O Regime Militar</li>
+                        <li>A Redemocratização do Brasil</li>
+                    </ul>
+                    <p>A compreensão do momento histórico é fundamental para a compreensão da vida dessas pessoas.</p>
+
+                    <h3>Propósito</h3>
+                    <p>A elaboração deste registro genealógico teve como propósito documentar e divulgar a história da família, permitindo a organização das informações sobre nossos ancestrais e descendentes em uma linha do tempo.</p>
+                    
+                    <p>Com este registro, é possível rastrear as origens e a trajetória da família ao longo das gerações, identificando características e particularidades que podem ser transmitidas de geração em geração.</p>
+
+                    <h3>Importância da Memória Familiar</h3>
+                    <p>A preservação da memória familiar é essencial para que possamos:</p>
+                    <ul>
+                        <li>Entender e proteger nossa história</li>
+                        <li>Caminhar para o futuro com uma base sólida</li>
+                        <li>Manter uma identidade bem definida</li>
+                        <li>Fortalecer os laços entre os membros da família</li>
+                    </ul>
+
+                    <p style="margin-top: 30px; font-size: 1.1em; font-style: italic; color: #5d4e37; border-top: 2px solid #d4af37; padding-top: 20px;"><strong>"Quem não conhece sua história está fadado a repiti-la."</strong></p>
+
+                    <h3>A Essência da Família</h3>
+                    <p>O espírito de união e acolhimento marcou a vida de João Ribeiro de Carvalho, desde quando foi acolhido por sua tia Joana Rodrigues Freire de Carvalho. Ele retribuiu esse gesto ao longo da vida, acolhendo sobrinhos, parentes, funcionários e amigos em sua casa.</p>
+
+                    <p>Essa cultura do acolhimento é a essência deste registro familiar, tornando-o especial e importante para a união da família.</p>
+
+                    <p><strong>A verdadeira riqueza da vida está nas relações que construímos e no amor que compartilhamos com aqueles que nos cercam.</strong></p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Família Ribeiro de Carvalho. Registro genealógico preservado com amor e memória.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">📍 Bahia, Brasil | Documento preparado com informações resgatadas de tradição familiar</p>
+        </footer>
+    </div>
+
+    <!-- MODAL -->
+    <div id="memberModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalName">Nome</h2>
+                <p id="modalInfo">Informações</p>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo dinâmico -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Trocar abas
+        function switchTab(tabName) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Dados dos membros
+        const membersData = {
+            'joao': {
+                name: 'João Ribeiro de Carvalho',
+                info: '16 de outubro de 1906 - 12 de novembro de 1988',
+                content: `<p><strong>Nascimento:</strong> 16 de outubro de 1906 na fazenda Tabocas, Nilo Peçanha, Bahia</p>
+                <p><strong>Falecimento:</strong> 12 de novembro de 1988, aos 82 anos, em sua casa em Itamari, Bahia, devido a uma hemorragia provocada por câncer de pulmão</p>
+                <p><strong>Sepultamento:</strong> Itamari, 11h00</p>
+                <p><strong>Esposa:</strong> Lídia Vasconcelos Ribeiro (casados em 17 de março de 1930)</p>
+                <p><strong>Trajetória:</strong> Órfão de pai aos poucos anos e logo depois de mãe, foi acolhido por sua tia e professora Joana Rodrigues Freire de Carvalho, que ensinou através do exemplo a importância do trabalho, estudos, compaixão, respeito ao próximo e retidão moral.</p>
+                <p><strong>Vida adulta:</strong> Quando atingiu a maioridade, retornou a Itamari para tomar posse dos bens dos pais, encontrando pouco restando do patrimônio. Junto com Lídia, enfrentou instabilidade política, revoluções, Segunda Guerra Mundial e escassez de alimentos e medicamentos.</p>
+                <p><strong>Realização:</strong> Ao final da vida, conseguiu transformar a fazenda Barra do Buri em um empreendimento produtivo e prospero.</p>
+                <p><strong>Legado:</strong> A maior herança foi o exemplo de vida transmitido aos descendentes: resiliência, fé em Deus, amor à família e valorização da educação.</p>`
+            },
+            'lidia': {
+                name: 'Lídia Vasconcelos Ribeiro',
+                info: '11 de dezembro de 1907 - 10 de outubro de 2001',
+                content: `<p><strong>Nascimento:</strong> 11 de dezembro de 1907 na cidade de Ubaira, Bahia</p>
+                <p><strong>Falecimento:</strong> 10 de outubro de 2001, aos 93 anos, às 18:00, na casa de sua filha Dulce, Camaçari, Bahia, devido a AVC isquêmico</p>
+                <p><strong>Sepultamento:</strong> Itamari, Bahia</p>
+                <p><strong>Esposo:</strong> João Ribeiro de Carvalho (casados em 17 de março de 1930)</p>
+                <p><strong>Vida ao lado de João:</strong> Enfrentou todos os desafios da vida brasileira: revoluções, Segunda Guerra Mundial, Regime Militar e redemocratização. Apesar de perder dois filhos, permaneceu firme em sua fé.</p>
+                <p><strong>Fé e Esperança:</strong> A música "Segura na mão de Deus" representava para Lídia um constante lembrete de que Deus estava sempre presente em suas vidas, guiando-os e protegendo-os em todas as situações.</p>
+                <p><strong>Mensagem deixada:</strong> Confiança, esperança, perseverança e superação foram transmitidas para toda a família através de seu exemplo.</p>`
+            },
+            'dulce': {
+                name: 'Dulce Ribeiro Vasconcelos',
+                info: '16 de janeiro de 1931 - 20 de agosto de 2010',
+                content: `<p><strong>Nascimento:</strong> 16 de janeiro de 1931 em Nilo Peçanha, Bahia</p>
+                <p><strong>Falecimento:</strong> 20 de agosto de 2010</p>
+                <p><strong>Esposo:</strong> Clovis Xavier Passinho (nascido em 06 de junho de 1930 em Ilhéus, falecido em 06 de maio de 2020)</p>
+                <p><strong>Filhos:</strong> 5 filhos</p>
+                <p><strong>Descendência notável:</strong> Hebert Clovis Ribeiro Passinho, Herman Cesio Ribeiro Passinho, Helder Célio Ribeiro Passinho, Helma Cleia Ribeiro Passinho e Hélia Célia Ribeiro Passinho.</p>
+                <p>Primeira filha do casal fundador, Dulce viu a família crescer e prosperar, mantendo os valores de união transmitidos por seus pais.</p>`
+            },
+            'eliezer': {
+                name: 'Eliezer Ribeiro de Vasconcelos',
+                info: '09 de março de 1933',
+                content: `<p><strong>Nascimento:</strong> 09 de março de 1933 em Nilo Peçanha, Bahia</p>
+                <p><strong>Esposa:</strong> Maria Helena Tourinho de Vasconcelos (nascida em 12 de janeiro de 1940 em Salvador, falecida em 30 de julho de 2021)</p>
+                <p><strong>Filhos:</strong> 3 filhos</p>
+                <p><strong>Contribuição importante:</strong> Eliezer Ribeiro de Vasconcelos foi fundamental para a elaboração deste registro genealógico. Suas memórias foram essenciais para elucidar informações que permitiram traçar um perfil completo e detalhado da vida e trajetória da família ao longo das gerações.</p>
+                <p><strong>Legado:</strong> Seu trabalho na preservação da história familiar é uma contribuição valiosa para manter viva a memória dos ancestrais.</p>`
+            },
+            'osvaldo': {
+                name: 'Osvaldo Ribeiro de Vasconcelos',
+                info: '03 de abril de 1935 - 07 de janeiro de 2023',
+                content: `<p><strong>Nascimento:</strong> 03 de abril de 1935 em Nilo Peçanha, Bahia</p>
+                <p><strong>Falecimento:</strong> 07 de janeiro de 2023</p>
+                <p><strong>Esposa:</strong> Edna Prado de Vasconcelos (nascida em 14 de julho de 1938 em Alagoinhas, Bahia)</p>
+                <p><strong>Filhos:</strong> Vários filhos que continuam a linhagem familiar</p>
+                <p><strong>Memória:</strong> Osvaldo viveu uma longa vida, sendo testemunha de toda a transformação do Brasil no século XX, e pôde transmitir aos seus descendentes as histórias e ensinamentos de seus pais.</p>`
+            },
+            'alcides': {
+                name: 'Alcides Ribeiro de Vasconcelos',
+                info: '04 de outubro de 1937 - 26 de novembro de 1946',
+                content: `<p><strong>Nascimento:</strong> 04 de outubro de 1937 em Ituberá, Bahia</p>
+                <p><strong>Falecimento:</strong> 26 de novembro de 1946 (aos 9 anos de idade)</p>
+                <p><strong>Significado:</strong> Alcides foi um dos dois filhos que João e Lídia perderam. Apesar da tragédia, o casal permaneceu firme em sua fé e superou todas as adversidades para cuidar da família.</p>`
+            },
+            'ebenezer': {
+                name: 'Ebenezer Ribeiro de Vasconcelos',
+                info: '23 de dezembro de 1940 - 27 de setembro de 1994',
+                content: `<p><strong>Nascimento:</strong> 23 de dezembro de 1940 em Nilo Peçanha, Bahia</p>
+                <p><strong>Falecimento:</strong> 27 de setembro de 1994</p>
+                <p><strong>Esposa:</strong> Ofir Ramos Quireza (nascida em 08 de agosto de 1943 em Salvador, Bahia)</p>
+                <p><strong>Filhos:</strong> 3 filhos - Marcio, Lavínia e Clarissa</p>
+                <p><strong>Importância histórica:</strong> Ebenezer foi um dos filhos que registrou depoimentos na Bíblia da família, preservando a história do casal João e Lídia para as gerações futuras.</p>`
+            },
+            'elides': {
+                name: 'Elides Ribeiro de Vasconcelos',
+                info: '21 de janeiro de 1942 - 07 de setembro de 1942',
+                content: `<p><strong>Nascimento:</strong> 21 de janeiro de 1942 em Nilo Peçanha, Bahia</p>
+                <p><strong>Falecimento:</strong> 07 de setembro de 1942 (faleceu aos 8 meses de idade)</p>
+                <p><strong>Significado:</strong> Elides foi o segundo filho que João e Lídia perderam. Essas tragédias testaram sua fé, mas o casal permaneceu unido e resiliente, dedicando-se aos filhos que sobreviveram.</p>`
+            },
+            'darcy': {
+                name: 'Darcy Ribeiro de Vasconcelos',
+                info: '11 de julho de 1947',
+                content: `<p><strong>Nascimento:</strong> 11 de julho de 1947 em Ituberá, Bahia</p>
+                <p><strong>Esposo:</strong> Luiz Carlos de Macêdo (nascido em 29 de fevereiro de 1944 em Salvador, Bahia)</p>
+                <p><strong>Filhos:</strong> 2 filhos - Lutgard Macêdo Neto e André Luis Ribeiro de Macêdo</p>
+                <p><strong>Contribuição importante:</strong> Darcy registrou depoimentos na Bíblia da família, preservando histórias e memórias de seus pais João e Lídia para as futuras gerações.</p>
+                <p><strong>Legado:</strong> Através de seus registros, a história da família continuou sendo documentada e transmitida aos descendentes.</p>`
+            }
+        };
+
+        // Mostrar modal com detalhes
+        function showMemberDetails(memberId) {
+            const member = membersData[memberId];
+            if (!member) return;
+
+            document.getElementById('modalName').textContent = member.name;
+            document.getElementById('modalInfo').textContent = member.info;
+            document.getElementById('modalBody').innerHTML = member.content;
+            document.getElementById('memberModal').style.display = 'block';
+        }
+
+        // Fechar modal
+        function closeModal() {
+            document.getElementById('memberModal').style.display = 'none';
+        }
+
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('memberModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
