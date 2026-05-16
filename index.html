@@ -558,7 +558,8 @@
         </header>
 
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('galeria')">🖼️ Galeria</button>
+            <button class="tab-btn active" onclick="switchTab('destaque')">⭐ Destaque</button>
+            <button class="tab-btn" onclick="switchTab('galeria')">🖼️ Galeria</button>
             <button class="tab-btn" onclick="switchTab('timeline')">📅 Timeline</button>
             <button class="tab-btn" onclick="switchTab('arvore')">🌳 Árvore</button>
             <button class="tab-btn" onclick="switchTab('historia')">📖 História</button>
@@ -567,8 +568,38 @@
         </div>
 
         <main>
+            <!-- SEÇÃO DESTAQUE: FOTOS HISTÓRICAS -->
+            <section id="destaque" class="section active">
+                <div style="margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5em; color: #3d2817; text-align: center; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px;">✨ Momentos Históricos da Família</h2>
+                    <div style="width: 100px; height: 4px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 0 auto 40px;"></div>
+
+                    <!-- FOTO 1 - EM GRANDE FORMATO -->
+                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); margin-bottom: 50px;">
+                        <div style="position: relative; width: 100%; max-width: 100%;">
+                            <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/IMG_6493.jpeg" alt="Reunião Familiar Grande" style="width: 100%; height: auto; display: block;">
+                            <div style="background: linear-gradient(135deg, #3d2817 0%, #5c4033 100%); color: #fefbf7; padding: 30px; text-align: center;">
+                                <h3 style="font-size: 1.8em; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">📸 Reunião Familiar Histórica</h3>
+                                <p style="font-size: 0.95em; line-height: 1.7; max-width: 800px; margin: 0 auto;">Um momento precioso capturado quando a família Ribeiro de Carvalho se reunia. Esta fotografia documenta várias gerações reunidas, com membros de diferentes idades em frente aos casarões históricos da fazenda, refletindo a força do espírito familial que caracterizava João e Lídia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FOTO 2 - EM GRANDE FORMATO -->
+                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+                        <div style="position: relative; width: 100%; max-width: 100%;">
+                            <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/IMG_5051.jpeg" alt="Reunião Familiar Colorida" style="width: 100%; height: auto; display: block;">
+                            <div style="background: linear-gradient(135deg, #8b6f47 0%, #5c4033 100%); color: #fefbf7; padding: 30px; text-align: center;">
+                                <h3 style="font-size: 1.8em; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">👨‍👩‍👧‍👦 Gerações Unidas</h3>
+                                <p style="font-size: 0.95em; line-height: 1.7; max-width: 800px; margin: 0 auto;">Outra reunião memorável da família em sua residência histórica. Esta imagem captura o legado vivo de João e Lídia através de seus descendentes, mostrando crianças e adultos juntos, perpetuando os valores de união, fé e acolhimento que marcaram a vida do casal fundador.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- SEÇÃO 1: GALERIA COM CARROSSEL -->
-            <section id="galeria" class="section active">
+            <section id="galeria" class="section">
                 <div class="carousel-section">
                     <h2 class="carousel-title">Momentos da Família</h2>
                     <p class="carousel-subtitle">Uma seleção de fotografias que marcaram nossa história</p>
@@ -832,48 +863,4 @@
                         </div>
                     </div>
 
-                    <div style="border-top: 3px dashed #d4af37; padding-top: 30px; margin-top: 30px;">
-                        <div style="text-align: center; margin-bottom: 20px; font-weight: 600; color: #5c4033;">📍 FILHOS (Geração 2)</div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
-                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #d4af37; text-align: center; font-size: 0.85em;">
-                                <div style="font-weight: 600;">Dulce</div>
-                                <div style="color: #8b6f47; font-size: 0.8em;">(1931-2010)</div>
-                            </div>
-                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #d4af37; text-align: center; font-size: 0.85em;">
-                                <div style="font-weight: 600;">Eliezer</div>
-                                <div style="color: #8b6f47; font-size: 0.8em;">(1933-)</div>
-                            </div>
-                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #d4af37; text-align: center; font-size: 0.85em;">
-                                <div style="font-weight: 600;">Osvaldo</div>
-                                <div style="color: #8b6f47; font-size: 0.8em;">(1935-2023)</div>
-                            </div>
-                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #d4af37; text-align: center; font-size: 0.85em;">
-                                <div style="font-weight: 600;">Ebenezer</div>
-                                <div style="color: #8b6f47; font-size: 0.8em;">(1940-1994)</div>
-                            </div>
-                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #d4af37; text-align: center; font-size: 0.85em;">
-                                <div style="font-weight: 600;">Darcy</div>
-                                <div style="color: #8b6f47; font-size: 0.8em;">(1947-)</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="border-top: 3px dashed #d4af37; padding-top: 30px; margin-top: 30px;">
-                        <div style="text-align: center; margin-bottom: 20px; font-weight: 600; color: #5c4033;">📍 NETOS (Geração 3)</div>
-                        <div style="background: #f5e6d3; padding: 15px; border-radius: 8px; font-size: 0.85em; color: #555;">
-                            <p>A terceira geração inclui dezenas de membros que continuam o legado familiar. Cada um carrega consigo as histórias e ensinamentos de João e Lídia, transmitindo-os para as gerações futuras.</p>
-                            <p style="margin-top: 10px; color: #8b6f47;">🌳 <strong>Uma árvore viva e em crescimento, enraizada na história, florescendo no presente.</strong></p>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            canvas.innerHTML = treeHTML;
-        }
-
-        // Inicializar
-        drawFamilyTree();
-        showSlide(0);
-    </script>
-</body>
-</html>
+                    <div style="border-top: 3px dashed
