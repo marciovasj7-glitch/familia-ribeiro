@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Import fonts for memorial aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Lora:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+@theme inline {
+  --font-serif: 'Lora', serif;
+  --font-sans: 'Source Sans Pro', sans-serif;
+  --font-display: 'Crimson Text', serif;
+  --radius: 0.5rem;
+}
+
+:root {
+  /* Memorial Archive Aesthetic - Warm Earthy Tones */
+  --primary: #6b4423;           /* Terracotta/Rust */
+  --primary-foreground: #fefbf7; /* Cream */
+  --secondary: #3d5a3d;         /* Deep green */
+  --secondary-foreground: #fefbf7;
+  --accent: #8b7355;            /* Ochre/Brown */
+  --background: #f5e6d3;        /* Warm cream/beige */
+  --foreground: #2c1810;        /* Dark brown */
+  --muted: #e8dcc8;             /* Light beige */
+  --muted-foreground: #7d6d5d;  /* Medium brown */
+  --card: #fefbf7;              /* Off-white */
+  --card-foreground: #2c1810;   /* Dark brown */
+  --border: #e8dcc8;            /* Light border */
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+  @apply font-bold tracking-tight;
+}
+
+.font-serif {
+  font-family: 'Lora', serif;
+}
+
+.font-display {
+  font-family: 'Crimson Text', serif;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default button styles */
+button {
+  @apply cursor-pointer transition-colors duration-200;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/80;
+}
