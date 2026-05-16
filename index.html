@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Família Ribeiro de Carvalho - Legado Genealógico</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Família Ribeiro de Carvalho - Patrimônio Genealógico</title>
     <style>
         * {
             margin: 0;
@@ -13,12 +12,16 @@
         }
 
         :root {
-            --primary: #3d2817;
+            --primary: #2c1810;
             --secondary: #8b6f47;
             --accent: #d4af37;
             --light: #f5e6d3;
-            --dark: #2a1810;
+            --dark: #1a0f0a;
             --cream: #fefbf7;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -26,46 +29,24 @@
             background: linear-gradient(135deg, #f5e6d3 0%, #e8d7c3 100%);
             color: #3d2817;
             line-height: 1.8;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(0, 0, 0, 0.03) 1px,
-                    transparent 1px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    rgba(0, 0, 0, 0.03) 1px,
-                    transparent 1px
-                );
-            background-size: 100% 2px, 2px 100%;
-            pointer-events: none;
-            z-index: -1;
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 1800px;
             margin: 0 auto;
+            overflow-x: hidden;
         }
 
-        /* HEADER ELEGANTE */
+        /* HEADER PREMIUM */
         header {
-            background: linear-gradient(135deg, #3d2817 0%, #5c4033 100%);
+            background: linear-gradient(135deg, #2c1810 0%, #5c4033 50%, #2c1810 100%);
             color: #fefbf7;
-            padding: 80px 40px;
+            padding: 100px 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            border-bottom: 5px solid #d4af37;
         }
 
         header::before {
@@ -75,96 +56,34 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse"><path d="M100,50 Q150,75 100,100 Q50,75 100,50" fill="rgba(212,175,55,0.05)" /></pattern></defs><rect fill="url(%23pattern)" width="1200" height="600" /></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(212,175,55,0.05)"/><circle cx="30" cy="30" r="20" fill="rgba(212,175,55,0.03)"/><circle cx="70" cy="70" r="30" fill="rgba(212,175,55,0.03)"/></svg>');
             opacity: 0.1;
-            pointer-events: none;
         }
 
         header h1 {
-            font-size: 3.5em;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
+            font-size: 4em;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.8s ease-out;
         }
 
         header p {
-            font-size: 1.3em;
+            font-size: 1.4em;
             font-style: italic;
             opacity: 0.95;
             position: relative;
             z-index: 1;
-            font-family: 'Georgia', serif;
+            margin: 10px 0;
         }
 
-        .header-divider {
-            width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-            margin: 25px auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* NAVEGAÇÃO */
-        .nav-tabs {
-            display: flex;
-            background: linear-gradient(90deg, #d4c5b0 0%, #e8dcc8 50%, #d4c5b0 100%);
-            border-bottom: 3px solid #8b6f47;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            flex-wrap: wrap;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-tabs button {
-            flex: 1;
-            min-width: 150px;
-            padding: 20px 15px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 0.95em;
-            font-weight: 600;
-            color: #3d2817;
-            transition: all 0.4s;
-            border-bottom: 4px solid transparent;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-        }
-
-        .nav-tabs button:hover {
-            background: rgba(61, 40, 23, 0.08);
-            border-bottom-color: #8b6f47;
-        }
-
-        .nav-tabs button.active {
-            background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
-            border-bottom-color: #d4af37;
-            color: #5c4033;
-            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        main {
-            padding: 60px 40px;
-        }
-
-        .section {
-            display: none;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeInUp {
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -172,148 +91,158 @@
             }
         }
 
-        /* CARROSSEL DE FOTOS */
-        .carousel-section {
-            margin: 40px 0;
-            background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        .header-line {
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 30px auto;
         }
 
-        .carousel-title {
-            font-size: 2.2em;
-            color: #3d2817;
-            margin-bottom: 10px;
-            text-align: center;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        .carousel-subtitle {
-            text-align: center;
-            color: #8b6f47;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            padding-bottom: 100%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .carousel-slide {
-            position: absolute;
+        /* NAVEGAÇÃO PREMIUM */
+        .nav-container {
+            background: linear-gradient(90deg, #d4c5b0 0%, #e8dcc8 50%, #d4c5b0 100%);
+            border-bottom: 3px solid #8b6f47;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-tabs {
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: #f0f0f0;
+            flex-wrap: wrap;
+            max-width: 1800px;
+            margin: 0 auto;
         }
 
-        .carousel-slide.active {
+        .nav-tabs button {
+            padding: 18px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #3d2817;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 4px solid transparent;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-tabs button:hover {
+            background: rgba(61, 40, 23, 0.1);
+            border-bottom-color: #8b6f47;
+        }
+
+        .nav-tabs button.active {
+            background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
+            border-bottom-color: #d4af37;
+            color: #5c4033;
+            box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        main {
+            padding: 80px 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .section {
+            display: none;
+            animation: fadeInSection 0.8s ease-out;
+            opacity: 0;
+        }
+
+        .section.active {
+            display: block;
             opacity: 1;
-            z-index: 10;
         }
 
-        .carousel-slide img {
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* GALERIA PREMIUM */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            aspect-ratio: 1;
+            group: hover;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease-out;
         }
 
-        .carousel-controls {
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 30px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(44, 24, 16, 0.95) 100%);
+            color: #fefbf7;
+            padding: 30px 20px 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
         }
 
-        .carousel-btn {
-            background: rgba(212, 175, 55, 0.8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2em;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
         }
 
-        .carousel-btn:hover {
-            background: #d4af37;
-            transform: scale(1.1);
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            display: flex;
-            gap: 8px;
-            z-index: 20;
-        }
-
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            background: #d4af37;
-            width: 30px;
-            border-radius: 5px;
-        }
-
-        /* TIMELINE */
+        /* TIMELINE SOFISTICADA */
         .timeline-section {
             margin: 60px 0;
             position: relative;
         }
 
         .timeline-title {
-            font-size: 2.2em;
-            color: #3d2817;
+            font-size: 2.8em;
+            color: #2c1810;
             text-align: center;
-            margin-bottom: 60px;
-            font-weight: 400;
-            letter-spacing: 2px;
+            margin-bottom: 80px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            position: relative;
         }
 
         .timeline {
             position: relative;
-            padding: 20px 0;
+            padding: 40px 0;
         }
 
         .timeline::before {
@@ -321,15 +250,18 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, #d4af37 0%, #8b6f47 100%);
+            background: linear-gradient(180deg, #d4af37 0%, #8b6f47 50%, #d4af37 100%);
         }
 
         .timeline-item {
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
             opacity: 0;
+        }
+
+        .timeline-item.visible {
             animation: slideInTimeline 0.8s ease-out forwards;
         }
 
@@ -347,14 +279,14 @@
         .timeline-item:nth-child(odd) {
             margin-left: 0;
             margin-right: auto;
-            padding-right: 55%;
+            padding-right: 52%;
             text-align: right;
         }
 
         .timeline-item:nth-child(even) {
             margin-left: auto;
             margin-right: 0;
-            padding-left: 55%;
+            padding-left: 52%;
             text-align: left;
         }
 
@@ -362,29 +294,42 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: #d4af37;
-            border: 4px solid #3d2817;
+            border: 4px solid #2c1810;
             border-radius: 50%;
             top: 0;
             z-index: 5;
-            box-shadow: 0 0 0 8px #fefbf7, 0 0 0 12px #8b6f47;
+            box-shadow: 0 0 0 10px #fefbf7, 0 0 0 16px #8b6f47;
+            transition: all 0.4s;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            width: 32px;
+            height: 32px;
+            box-shadow: 0 0 0 12px #fefbf7, 0 0 0 18px #d4af37;
         }
 
         .timeline-content {
             background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 3px solid #d4af37;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 4px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+        }
+
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
         }
 
         .timeline-year {
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: 600;
-            color: #3d2817;
-            margin-bottom: 8px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .timeline-text {
@@ -393,474 +338,426 @@
             line-height: 1.8;
         }
 
-        /* ÁRVORE GENEALÓGICA INTERATIVA */
-        .tree-section {
-            margin: 60px 0;
+        /* SEÇÃO DE HISTÓRIA */
+        .history-section {
             background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            border-radius: 20px;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin: 60px 0;
         }
 
-        .tree-title {
-            font-size: 2.2em;
-            color: #3d2817;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 400;
+        .history-section h2 {
+            font-size: 2.5em;
+            color: #2c1810;
+            margin-bottom: 20px;
+            font-weight: 300;
             letter-spacing: 2px;
         }
 
-        .tree-canvas {
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-            position: relative;
-            overflow: auto;
-        }
-
-        .tree-info {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #d4af37;
-            color: #555;
-            font-size: 0.9em;
-        }
-
-        /* TEXTO E HISTÓRIAS */
-        .story-text {
-            background: linear-gradient(135deg, #fefbf7 0%, #f5e6d3 100%);
-            padding: 40px;
-            border-left: 5px solid #d4af37;
-            margin: 30px 0;
-            line-height: 1.9;
-            font-size: 1.05em;
-            color: #555;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .story-text h2 {
-            color: #3d2817;
-            margin-bottom: 20px;
-            font-size: 2em;
+        .history-section h3 {
+            font-size: 1.5em;
+            color: #5c4033;
+            margin: 40px 0 15px;
             font-weight: 400;
             letter-spacing: 1px;
+            border-bottom: 2px solid #d4af3750;
+            padding-bottom: 10px;
         }
 
-        .story-text h3 {
-            color: #5c4033;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-            font-weight: 400;
-        }
-
-        .story-text p {
+        .history-section p {
+            font-size: 1.05em;
+            line-height: 1.9;
+            color: #555;
             margin-bottom: 18px;
             text-align: justify;
         }
 
+        /* VÍDEOS */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 70px rgba(212, 175, 55, 0.2);
+        }
+
+        .video-header {
+            background: linear-gradient(135deg, #2c1810 0%, #5c4033 100%);
+            color: #fefbf7;
+            padding: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+        }
+
         /* FOOTER */
         footer {
-            background: linear-gradient(135deg, #3d2817 0%, #5c4033 100%);
+            background: linear-gradient(135deg, #2c1810 0%, #5c4033 100%);
             color: #fefbf7;
-            padding: 50px 40px;
+            padding: 60px 40px;
             text-align: center;
-            border-top: 3px solid #d4af37;
-            margin-top: 60px;
+            border-top: 4px solid #d4af37;
+            margin-top: 80px;
         }
 
         footer p {
-            margin: 10px 0;
+            margin: 12px 0;
             font-size: 0.95em;
+            letter-spacing: 0.5px;
         }
 
-        /* RESPONSIVIDADE */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
-            header {
-                padding: 50px 20px;
-            }
-
             header h1 {
-                font-size: 2em;
-                letter-spacing: 2px;
+                font-size: 2.2em;
             }
 
             main {
-                padding: 30px 15px;
+                padding: 40px 20px;
             }
 
             .timeline::before {
-                left: 20px;
+                left: 25px;
             }
 
             .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
-                padding: 0 0 0 80px;
+                padding: 0 0 0 100px;
                 margin: 0;
                 text-align: left;
             }
 
             .timeline-marker {
-                left: 8px;
+                left: 13px;
             }
 
-            .carousel-section {
-                padding: 20px;
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .carousel-title {
-                font-size: 1.6em;
+            .history-section {
+                padding: 30px;
+            }
+
+            .history-section h2 {
+                font-size: 1.8em;
             }
         }
 
-        /* ANIMAÇÕES SUAVES */
-        .fade-in {
-            animation: fadeIn 1s ease-out;
+        /* SECTION TITLE */
+        .section-title {
+            font-size: 2.8em;
+            color: #2c1810;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            position: relative;
+            padding-bottom: 20px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        /* DIVIDER */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 60px 0;
         }
 
         /* SCROLL REVEAL */
-        .reveal {
+        .scroll-reveal {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
-        .reveal.active {
+        .scroll-reveal.visible {
             opacity: 1;
             transform: translateY(0);
-            transition: all 0.8s ease-out;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌳 Família Ribeiro de Carvalho</h1>
-            <div class="header-divider"></div>
-            <p>Uma jornada através das gerações</p>
-            <p style="font-size: 0.9em; margin-top: 20px; font-style: normal;">Legado, memória e história familiar</p>
+            <h1>🌳 FAMÍLIA RIBEIRO DE CARVALHO</h1>
+            <div class="header-line"></div>
+            <p>Legado Genealógico</p>
+            <p style="font-size: 1em; margin-top: 15px; opacity: 0.85;">Uma jornada através do tempo, memória e história familiar</p>
         </header>
 
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('destaque')">⭐ Destaque</button>
-            <button class="tab-btn" onclick="switchTab('galeria')">🖼️ Galeria</button>
-            <button class="tab-btn" onclick="switchTab('timeline')">📅 Timeline</button>
-            <button class="tab-btn" onclick="switchTab('arvore')">🌳 Árvore</button>
-            <button class="tab-btn" onclick="switchTab('historia')">📖 História</button>
-            <button class="tab-btn" onclick="switchTab('videos')">🎬 Vídeos</button>
-            <button class="tab-btn" onclick="switchTab('sobre')">ℹ️ Sobre</button>
+        <div class="nav-container">
+            <div class="nav-tabs">
+                <button class="nav-btn active" onclick="showTab('galeria')">🖼️ Galeria</button>
+                <button class="nav-btn" onclick="showTab('historia')">📖 História</button>
+                <button class="nav-btn" onclick="showTab('timeline')">📅 Timeline</button>
+                <button class="nav-btn" onclick="showTab('videos')">🎬 Vídeos</button>
+                <button class="nav-btn" onclick="showTab('sobre')">ℹ️ Sobre</button>
+            </div>
         </div>
 
         <main>
-            <!-- SEÇÃO DESTAQUE: FOTOS HISTÓRICAS -->
-            <section id="destaque" class="section active">
-                <div style="margin-bottom: 60px;">
-                    <h2 style="font-size: 2.5em; color: #3d2817; text-align: center; margin-bottom: 15px; font-weight: 400; letter-spacing: 2px;">✨ Momentos Históricos da Família</h2>
-                    <div style="width: 100px; height: 4px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 0 auto 40px;"></div>
-
-                    <!-- FOTO 1 - EM GRANDE FORMATO -->
-                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); margin-bottom: 50px;">
-                        <div style="position: relative; width: 100%; max-width: 100%;">
-                            <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/IMG_6493.jpeg" alt="Reunião Familiar Grande" style="width: 100%; height: auto; display: block;">
-                            <div style="background: linear-gradient(135deg, #3d2817 0%, #5c4033 100%); color: #fefbf7; padding: 30px; text-align: center;">
-                                <h3 style="font-size: 1.8em; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">📸 Reunião Familiar Histórica</h3>
-                                <p style="font-size: 0.95em; line-height: 1.7; max-width: 800px; margin: 0 auto;">Um momento precioso capturado quando a família Ribeiro de Carvalho se reunia. Esta fotografia documenta várias gerações reunidas, com membros de diferentes idades em frente aos casarões históricos da fazenda, refletindo a força do espírito familial que caracterizava João e Lídia.</p>
-                            </div>
-                        </div>
+            <!-- GALERIA -->
+            <section id="galeria" class="section active">
+                <h2 class="section-title">Galeria de Fotografias</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Joao%20Ribeiro%20e%20Lidia%20Vasconcelos.jpeg" alt="">
+                        <div class="gallery-caption">João Ribeiro e Lídia Vasconcelos</div>
                     </div>
-
-                    <!-- FOTO 2 - EM GRANDE FORMATO -->
-                    <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
-                        <div style="position: relative; width: 100%; max-width: 100%;">
-                            <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/IMG_5051.jpeg" alt="Reunião Familiar Colorida" style="width: 100%; height: auto; display: block;">
-                            <div style="background: linear-gradient(135deg, #8b6f47 0%, #5c4033 100%); color: #fefbf7; padding: 30px; text-align: center;">
-                                <h3 style="font-size: 1.8em; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">👨‍👩‍👧‍👦 Gerações Unidas</h3>
-                                <p style="font-size: 0.95em; line-height: 1.7; max-width: 800px; margin: 0 auto;">Outra reunião memorável da família em sua residência histórica. Esta imagem captura o legado vivo de João e Lídia através de seus descendentes, mostrando crianças e adultos juntos, perpetuando os valores de união, fé e acolhimento que marcaram a vida do casal fundador.</p>
-                            </div>
-                        </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Eliezer%20Ribeiro%20de%20Vasconcelos.jpg" alt="">
+                        <div class="gallery-caption">Eliezer Ribeiro de Vasconcelos</div>
                     </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO 1: GALERIA COM CARROSSEL -->
-            <section id="galeria" class="section">
-                <div class="carousel-section">
-                    <h2 class="carousel-title">Momentos da Família</h2>
-                    <p class="carousel-subtitle">Uma seleção de fotografias que marcaram nossa história</p>
-
-                    <div class="carousel-container">
-                        <div class="carousel-wrapper">
-                            <div class="carousel-slide active">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/João%20Ribeiro%20e%20Lidia%20Vasconcelos.jpeg" alt="João e Lídia">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Eliezer%20Ribeiro%20de%20Vasconcelos.jpg" alt="Eliezer">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Oswaldo%20Ribeiro%20de%20Vasconcelos.jpg" alt="Oswaldo">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Ebenezer%20Ribeiro%20de%20Vasconcelos.jpeg" alt="Ebenezer">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Casamento%20de%20Ebenezer%20e%20Ofir.jpeg" alt="Casamento">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Fazenda%20Buri.jpeg" alt="Fazenda Buri">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Recordação%20dos%20meus%20avós%20,tios%20e%20primos.jpg" alt="Família reunida">
-                            </div>
-
-                            <div class="carousel-controls">
-                                <button class="carousel-btn" onclick="changeSlide(-1)">❮</button>
-                                <button class="carousel-btn" onclick="changeSlide(1)">❯</button>
-                            </div>
-
-                            <div class="carousel-indicators">
-                                <div class="indicator active" onclick="goToSlide(0)"></div>
-                                <div class="indicator" onclick="goToSlide(1)"></div>
-                                <div class="indicator" onclick="goToSlide(2)"></div>
-                                <div class="indicator" onclick="goToSlide(3)"></div>
-                                <div class="indicator" onclick="goToSlide(4)"></div>
-                                <div class="indicator" onclick="goToSlide(5)"></div>
-                                <div class="indicator" onclick="goToSlide(6)"></div>
-                            </div>
-                        </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Oswaldo%20Ribeiro%20de%20Vasconcelos.jpg" alt="">
+                        <div class="gallery-caption">Oswaldo Ribeiro de Vasconcelos</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Ebenezer%20Ribeiro%20de%20Vasconcelos.jpeg" alt="">
+                        <div class="gallery-caption">Ebenezer Ribeiro de Vasconcelos</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Casamento%20de%20Ebenezer%20e%20Ofir.jpeg" alt="">
+                        <div class="gallery-caption">Casamento de Ebenezer e Ofir</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Fazenda%20Buri.jpeg" alt="">
+                        <div class="gallery-caption">Fazenda Buri</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Recordacao%20dos%20meus%20avos%20,tios%20e%20primos.jpg" alt="">
+                        <div class="gallery-caption">Recordação dos Avós, Tios e Primos</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Registro%20Historico.jpeg" alt="">
+                        <div class="gallery-caption">Registro Histórico</div>
                     </div>
                 </div>
             </section>
 
-            <!-- SEÇÃO 2: TIMELINE -->
-            <section id="timeline" class="section">
-                <h2 class="timeline-title">A Jornada da Família</h2>
-                <div class="timeline">
-                    <div class="timeline-item" style="animation-delay: 0s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1906 - 1907</div>
-                            <div class="timeline-text"><strong>Nascimento de João e Lídia</strong><br>João nasce na fazenda Tabocas, Nilo Peçanha. Lídia nasce em Ubaira, Bahia.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 0.2s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1930</div>
-                            <div class="timeline-text"><strong>Casamento de João e Lídia</strong><br>17 de março: Um casal que enfrentaria juntos todos os desafios da vida.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 0.4s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1931 - 1947</div>
-                            <div class="timeline-text"><strong>Filhos Nascem</strong><br>Dulce, Eliezer, Osvaldo, Alcides, Ebenezer, Elides e Darcy. Uma família em crescimento.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 0.6s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1937 - 1942</div>
-                            <div class="timeline-text"><strong>Perdas e Resiliência</strong><br>A família enfrenta tragédias, mas permanece firme em sua fé. Legado de esperança.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 0.8s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1950s - 1970s</div>
-                            <div class="timeline-text"><strong>Expansão Familiar</strong><br>Descendentes de segunda geração nascem. A família se expande por Bahia.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 1s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">1988 - 2001</div>
-                            <div class="timeline-text"><strong>Legado Deixado</strong><br>João (1988) e Lídia (2001) deixam um legado de vida, fé e amor familiar.</div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" style="animation-delay: 1.2s">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">Hoje</div>
-                            <div class="timeline-text"><strong>Memória Preservada</strong><br>Suas histórias continuam inspirando gerações. Este registro honra seu legado.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO 3: ÁRVORE GENEALÓGICA -->
-            <section id="arvore" class="section">
-                <div class="tree-section">
-                    <h2 class="tree-title">Árvore Genealógica</h2>
-                    <div class="tree-canvas" id="treeCanvas"></div>
-                    <div class="tree-info">
-                        <strong>ℹ️ Informação:</strong> A árvore acima mostra as três gerações principais da família Ribeiro de Carvalho. Clique nas gerações para explorar os ramos familiares e descobrir as histórias de cada membro.
-                    </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO 4: HISTÓRIA -->
+            <!-- HISTÓRIA -->
             <section id="historia" class="section">
-                <div class="story-text">
+                <h2 class="section-title">A História da Família</h2>
+                <div class="history-section">
                     <h2>João Ribeiro de Carvalho & Lídia Vasconcelos Ribeiro</h2>
-                    <p>A história de uma família é muito mais que nomes e datas. É uma jornada de amor, resiliência e fé através das gerações.</p>
+                    <p>A história de uma família é muito mais que nomes e datas. É uma jornada de amor, resiliência e fé através das gerações, marcando profundamente a história brasileira.</p>
 
-                    <h3>O Homem: João Ribeiro de Carvalho (1906-1988)</h3>
+                    <h3>🎯 O Fundador: João Ribeiro de Carvalho (1906-1988)</h3>
                     <p><strong>Nascimento:</strong> 16 de outubro de 1906 na fazenda Tabocas, Nilo Peçanha, Bahia. Órfão desde criança, foi acolhido por sua tia Joana Rodrigues Freire de Carvalho, que lhe ensinou a importância do trabalho, dos estudos, da compaixão e da retidão moral.</p>
+                    <p>Quando atingiu a maioridade, retornou para tomar posse de seus bens, encontrando pouco restando do patrimônio. Com determinação, construiu sua vida ao lado de Lídia, enfrentando instabilidade política, revoluções, Segunda Guerra Mundial e escassez de recursos, mas sempre com fé inabalável.</p>
 
-                    <h3>A Mulher: Lídia Vasconcelos Ribeiro (1907-2001)</h3>
+                    <h3>💎 A Matriarca: Lídia Vasconcelos Ribeiro (1907-2001)</h3>
                     <p><strong>Nascimento:</strong> 11 de dezembro de 1907 em Ubaira, Bahia. Após casar-se com João em 17 de março de 1930, tornou-se Lídia Vasconcelos Ribeiro, formando um casal que enfrentaria juntos todos os desafios da vida.</p>
+                    <p>Lídia foi o pilar de fé da família. A música "Segura na mão de Deus" representava para ela um constante lembrete de que Deus estava sempre presente, guiando-os através de todas as adversidades. Apesar de perder dois filhos, permaneceu firme em sua esperança.</p>
 
-                    <h3>Uma Vida Juntos</h3>
-                    <p>João e Lídia vivenciaram períodos cruciais da história brasileira: o início da República, a Era Vargas, a Segunda Guerra Mundial, o Regime Militar e a Redemocratização. Enfrentaram escassez de alimentos e medicamentos, mas sobreviveram com dedicação à agricultura de subsistência, à criação de animais e parcerias com amigos.</p>
-
-                    <p>Apesar de perderem dois filhos, o casal permaneceu firme em sua fé. A música "Segura na mão de Deus" representava para Lídia um constante lembrete de que Deus estava presente em suas vidas.</p>
-
-                    <h3>O Legado</h3>
+                    <h3>🌳 O Legado</h3>
                     <p>Ao final de suas vidas, conseguiram transformar a fazenda Barra do Buri em um empreendimento produtivo e próspero. Mas a maior herança que deixaram foi o exemplo de vida: <strong>resiliência, fé, amor à família e valorização da educação</strong>.</p>
                 </div>
             </section>
 
-            <!-- SEÇÃO 5: VÍDEOS -->
-            <section id="videos" class="section">
-                <div class="carousel-section">
-                    <h2 class="carousel-title">Documentários da Família</h2>
-                    <p class="carousel-subtitle">Histórias em movimento</p>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px;">
-                        <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                            <div style="background: #e8dcc8; padding: 15px; border-bottom: 3px solid #d4af37;">
-                                <h3 style="color: #3d2817; margin: 0;">📹 Trajetória de João e Lídia</h3>
-                            </div>
-                            <video width="100%" controls style="display: block;">
-                                <source src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Trajetória__João_e_Lídia.mp4" type="video/mp4">
-                            </video>
+            <!-- TIMELINE -->
+            <section id="timeline" class="section">
+                <h2 class="timeline-title">Marcos Históricos</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1906 - 1907</div>
+                            <div class="timeline-text">Nascimento de João e Lídia em cidades diferentes da Bahia</div>
                         </div>
+                    </div>
 
-                        <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                            <div style="background: #e8dcc8; padding: 15px; border-bottom: 3px solid #d4af37;">
-                                <h3 style="color: #3d2817; margin: 0;">📹 Legado de João e Lídia</h3>
-                            </div>
-                            <video width="100%" controls style="display: block;">
-                                <source src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Legado_de_João_e_Lídia.mp4" type="video/mp4">
-                            </video>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1930</div>
+                            <div class="timeline-text">Casamento de João e Lídia - 17 de março</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1931-1947</div>
+                            <div class="timeline-text">Nascimento dos 7 filhos</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1937-1942</div>
+                            <div class="timeline-text">Perdas familiares e resiliência</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1950s-1970s</div>
+                            <div class="timeline-text">Expansão da família - segunda e terceira gerações</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1988</div>
+                            <div class="timeline-text">Falecimento de João - 12 de novembro</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2001</div>
+                            <div class="timeline-text">Falecimento de Lídia - 10 de outubro</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">Hoje</div>
+                            <div class="timeline-text">Legado vivo através de descendentes</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SEÇÃO 6: SOBRE -->
+            <!-- VÍDEOS -->
+            <section id="videos" class="section">
+                <h2 class="section-title">Documentários Familiares</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-header">📹 Trajetória de João e Lídia</div>
+                        <video controls>
+                            <source src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Trajetória__João_e_Lídia.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-header">📹 Legado de João e Lídia</div>
+                        <video controls>
+                            <source src="https://raw.githubusercontent.com/marciovasj7-glitch/familia-ribeiro/main/Legado_de_João_e_Lídia.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOBRE -->
             <section id="sobre" class="section">
-                <div class="story-text">
-                    <h2>Sobre Este Registro</h2>
-                    <p>Este registro genealógico foi criado com o propósito de documentar e preservar a história da Família Ribeiro de Carvalho para as gerações presentes e futuras.</p>
+                <h2 class="section-title">Sobre Este Registro</h2>
+                <div class="history-section">
+                    <h3>Preservação da Memória Familiar</h3>
+                    <p>Este registro genealógico foi criado com o propósito sagrado de documentar e preservar a história da Família Ribeiro de Carvalho para as gerações presentes e futuras.</p>
 
                     <h3>Fontes Históricas</h3>
                     <p>As informações foram resgatadas de uma antiga Bíblia que pertencia a Lídia Vasconcelos Ribeiro, com depoimentos registrados pelos filhos Ebenezer Ribeiro de Vasconcelos e Darcy Ribeiro de Macêdo. A contribuição de Eliezer Ribeiro de Vasconcelos foi fundamental para elucidar informações que permitiram traçar um perfil completo e detalhado da vida desta família.</p>
 
-                    <h3>Importância da Memória</h3>
+                    <h3>A Importância da Memória</h3>
                     <p><strong>"Quem não conhece sua história está fadado a repiti-la."</strong> A preservação da memória familiar é essencial para entender e proteger nossa história, caminhando para o futuro com uma base sólida e identidade bem definida.</p>
 
                     <h3>Um Legado de Amor</h3>
-                    <p>O espírito de união e acolhimento marcou a vida de João Ribeiro de Carvalho. Essa cultura do acolhimento é a essência deste registro familiar, tornando-o especial e importante para a união da família.</p>
+                    <p>O espírito de união e acolhimento marcou a vida de João Ribeiro de Carvalho desde seu próprio acolhimento por sua tia. Essa cultura do acolhimento é a essência deste registro familiar, tornando-o especial e importante para a união de todas as gerações.</p>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p><strong>🌳 Família Ribeiro de Carvalho</strong></p>
-            <p>Legado genealógico preservado com amor e memória</p>
-            <p style="margin-top: 20px; font-size: 0.85em;">📍 Bahia, Brasil | Uma homenagem às gerações que vieram antes e aos que virão depois</p>
-            <p style="margin-top: 15px; font-size: 0.8em;">© 2025 - Registro Genealógico Oficial</p>
+            <p><strong>🌳 FAMÍLIA RIBEIRO DE CARVALHO</strong></p>
+            <p>Patrimônio Genealógico Preservado com Amor e Memória</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">📍 Bahia, Brasil | Uma homenagem às gerações que vieram antes</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">© 2025 - Registro Genealógico Oficial | Custódia da História Familiar</p>
         </footer>
     </div>
 
     <script>
-        // Carrossel
-        let currentSlide = 0;
-        const totalSlides = document.querySelectorAll('.carousel-slide').length;
-
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const indicators = document.querySelectorAll('.indicator');
-
-            if (n >= totalSlides) currentSlide = 0;
-            if (n < 0) currentSlide = totalSlides - 1;
-
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(ind => ind.classList.remove('active'));
-
-            slides[currentSlide].classList.add('active');
-            indicators[currentSlide].classList.add('active');
-        }
-
-        function changeSlide(n) {
-            currentSlide += n;
-            showSlide(currentSlide);
-        }
-
-        function goToSlide(n) {
-            currentSlide = n;
-            showSlide(currentSlide);
-        }
-
-        // Auto-rotação do carrossel
-        setInterval(() => {
-            if (document.querySelector('#galeria').classList.contains('active')) {
-                changeSlide(1);
-            }
-        }, 5000);
-
-        // Trocar abas
-        function switchTab(tabName) {
+        // Sistema de Abas
+        function showTab(tabName) {
+            // Ocultar todas as seções
             const sections = document.querySelectorAll('.section');
-            const buttons = document.querySelectorAll('.tab-btn');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
 
-            sections.forEach(section => section.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
+            // Remover classe active de todos os botões
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
 
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-            window.scrollTo(0, 0);
+            // Mostrar seção selecionada
+            const selectedSection = document.getElementById(tabName);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+
+                // Adicionar classe active ao botão correto
+                event.target.classList.add('active');
+
+                // Scroll smooth para o topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-        // Desenhar árvore genealógica
-        function drawFamilyTree() {
-            const canvas = document.getElementById('treeCanvas');
+        // Scroll Reveal para Timeline
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-            const treeHTML = `
-                <div style="padding: 30px; font-family: 'Playfair Display', serif; color: #3d2817;">
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <div style="display: inline-block; background: linear-gradient(135deg, #fefbf7, #f5e6d3); padding: 20px 30px; border-radius: 10px; border: 2px solid #d4af37; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <div style="font-size: 1.1em; font-weight: 600; margin-bottom: 5px;">👤 João Ribeiro de Carvalho</div>
-                            <div style="font-size: 0.85em; color: #8b6f47;">(1906-1988)</div>
-                        </div>
-                        <div style="margin-top: 10px; color: #d4af37; font-size: 1.5em;">♥</div>
-                        <div style="display: inline-block; background: linear-gradient(135deg, #fefbf7, #f5e6d3); padding: 20px 30px; border-radius: 10px; border: 2px solid #d4af37; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <div style="font-size: 1.1em; font-weight: 600; margin-bottom: 5px;">👤 Lídia Vasconcelos Ribeiro</div>
-                            <div style="font-size: 0.85em; color: #8b6f47;">(1907-2001)</div>
-                        </div>
-                    </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-                    <div style="border-top: 3px dashed
+        // Observar items de timeline
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observar elementos com scroll-reveal
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Inicializar
+        window.addEventListener('load', () => {
+            console.log('Site carregado com sucesso!');
+        });
+    </script>
+</body>
+</html>
